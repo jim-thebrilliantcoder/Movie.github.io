@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        #container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        #message {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            animation: fadeIn 1s forwards, typing 4s steps(45, end) 1s;
+            border-right: 4px solid white;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .yes {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .yes:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+
+        .no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+
+        .no:hover {
+            transform: scale(1.1);
+        }
+
+        #finalMessage {
+            display: none;
+            color: #ff69b4;
+            text-align: center;
+            animation: fadeIn 1s forwards;
+        }
+
+        #finalMessage h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        #finalMessage p {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="message">Would you like to go for the movie with me?</div>
+    <div class="buttons">
+        <button class="btn yes" onclick="showFinalMessage()">Yes</button>
+        <button class="btn no" id="noBtn" onmouseover="moveNo()">No</button>
+    </div>
+</div>
+
+<div id="finalMessage">
+    <h1>DONE, LET'S GOOO ❤️</h1>
+    <p>text me soon</p>
+</div>
+
+<script>
+    const noBtn = document.getElementById('noBtn');
+    const container = document.getElementById('container');
+    const finalMessage = document.getElementById('finalMessage');
+
+    function moveNo() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    }
+
+    function showFinalMessage() {
+        container.style.display = 'none'; // Hide the initial content
+        finalMessage.style.display = 'block'; // Show the final message
+    }
+</script>
+</body>
+</html>
+
+
+
